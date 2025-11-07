@@ -16,3 +16,6 @@ serviceAccountKey.json
 
 # Logs
 *.log
+
+# Firebase keys
+serviceAccountKey.json

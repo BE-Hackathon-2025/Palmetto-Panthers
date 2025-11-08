@@ -52,7 +52,7 @@ React Form → FastAPI /readiness/score → ReadinessService → Score + Breakdo
 
 
 
-<img width="1175" height="1163" alt="diagram" src="https://github.com/user-attachments/assets/80278445-2bb3-4dcf-b0a7-4c293a92f69a" />
+Sequence Diagram: https://github.com/user-attachments/assets/80278445-2bb3-4dcf-b0a7-4c293a92f69a
 
 
 

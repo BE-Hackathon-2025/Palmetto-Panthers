@@ -1,9 +1,11 @@
 from fastapi import FastAPI
-from Backend.routes.ai_routes import router as ai_router
+from Backend.routes import ai_routes  # ✅ import the router module
 
-app = FastAPI(title="Bridge AI Backend")
-app.include_router(ai_router, prefix="/ai")
+app = FastAPI(title="Bridge Backend API")
+
+# ✅ include the router
+app.include_router(ai_routes.router)
 
 @app.get("/")
 def root():
-    return {"message": "Bridge AI Backend is running"}
+    return {"message": "Bridge Backend API is running 🚀"}

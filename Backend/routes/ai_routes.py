@@ -1,7 +1,6 @@
 from fastapi import APIRouter
-from Backend.services.embeddings_service import get_embedding
+from Backend.services.embedding_service import get_embedding
 from Backend.services.ai_service import generate_answer
-from Backend.config.qdrant_config import qdrant
 
 router = APIRouter()
 

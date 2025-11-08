@@ -16,3 +16,5 @@ serviceAccountKey.json
 
 # Logs
 *.log
+
+Backend/config/firebase_service_key.json

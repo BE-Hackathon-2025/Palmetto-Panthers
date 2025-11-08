@@ -111,9 +111,9 @@ HomeReady/
 
 ## ✨ Contributors
 
-**April Ossai** 
-**Subash Neupane** 
-**Amrinder Singh** 
+**April Ossai,** 
+**Subash Neupane,** 
+**Amrinder Singh,** 
 **Javarius**
 
 > 🏆 Built for equitable access to homeownership readiness.

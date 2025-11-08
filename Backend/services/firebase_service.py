@@ -36,7 +36,7 @@ def get_user_data(user_id: str):
         data = doc.to_dict()
         return _sanitize_firestore_data(data)
     else:
-        raise ValueError(f"User '{user_id}' not found.")
+        raise Exception(f"User '{user_id}' not found.")
 
 
 def update_user_summary(user_id: str, new_summary: str):

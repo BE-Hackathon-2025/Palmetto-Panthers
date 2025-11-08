@@ -18,10 +18,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
-import safePlaceLogo from "@/assets/safeplace-logo.png";
-import { useAuth } from "@/context/AuthContext";
 import defaultAvatar from "@/assets/user.png";
 import homeReadyLogo from "@/assets/homeready-logo.png";
+import { useAuth } from "@/context/AuthContext";
+
 const ALL_ITEMS = [
   { title: "Dashboard", path: "/dashboard", authOnly: true },
   { title: "First Steps", path: "/first-steps" },
@@ -29,6 +29,8 @@ const ALL_ITEMS = [
   { title: "Resources and Assistance", path: "/resources" },
   { title: "Knowledge Center", path: "/knowledge-center" },
   { title: "About Us", path: "/about" },
+  // ✅ Added “Check Readiness” — visible only for authenticated users
+  { title: "Check Readiness", path: "/check-readiness", authOnly: true },
 ] as const;
 
 export function Navigation() {
@@ -36,18 +38,12 @@ export function Navigation() {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, logout } = useAuth();
-  console.log(user);
 
-  // Only include Dashboard when authenticated
+  // ✅ Only include “authOnly” routes when logged in
   const navItems = useMemo(
-    () => ALL_ITEMS.filter((i) => !i.authOnly || !!user),
+    () => ALL_ITEMS.filter((item) => !item.authOnly || !!user),
     [user]
   );
-
-  const initial =
-    user?.displayName?.[0]?.toUpperCase() ||
-    user?.email?.[0]?.toUpperCase() ||
-    "U";
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -60,17 +56,16 @@ export function Navigation() {
     <div className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo → Welcome */}
+          {/* Logo */}
           <Link to="/" className="flex shrink-0 items-center gap-2">
-  <img
-    src={homeReadyLogo}
-    alt="HomeReady"
-    className="h-12 md:h-14 w-auto object-contain"
-  />
-</Link>
+            <img
+              src={homeReadyLogo}
+              alt="HomeReady"
+              className="h-12 md:h-14 w-auto object-contain"
+            />
+          </Link>
 
-
-          {/* Desktop nav */}
+          {/* Desktop Nav */}
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               {navItems.map((item) => (
@@ -79,7 +74,9 @@ export function Navigation() {
                     <NavigationMenuLink
                       className={[
                         navigationMenuTriggerStyle(),
-                        isActive(item.path) ? "bg-primary/10 text-primary" : "",
+                        isActive(item.path)
+                          ? "bg-primary/10 text-primary"
+                          : "",
                       ].join(" ")}
                       aria-current={isActive(item.path) ? "page" : undefined}
                     >
@@ -91,7 +88,7 @@ export function Navigation() {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Right side: auth actions or avatar */}
+          {/* Right: Auth / Avatar */}
           <div className="hidden items-center gap-3 lg:flex">
             {!user ? (
               <>
@@ -133,6 +130,9 @@ export function Navigation() {
                     <Link to="/dashboard">Dashboard</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
+                    <Link to="/check-readiness">Check Readiness</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
                     <Link to="/profile">Profile</Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
@@ -147,7 +147,7 @@ export function Navigation() {
             )}
           </div>
 
-          {/* Mobile hamburger + sheet */}
+          {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon" aria-label="Open menu">

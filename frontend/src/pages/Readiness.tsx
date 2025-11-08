@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "@/styles/readiness.css";
+import "@/styles/redinesscard.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
 
@@ -174,19 +175,9 @@ function ReadinessResult({ data }) {
         <li>Packet completeness: <strong>{pkt_points}</strong> (weight {breakdown.packet.weight}%)</li>
       </ul>
 
-      <h3 className="section-title">Recommendations</h3>
-      <ul style={{ marginTop: 8 }}>
-        {tips.map((t, i) => <li key={i}>{t}</li>)}
-      </ul>
+      
 
-      <h3 className="section-title" style={{ marginTop: 18 }}>Timeline</h3>
-      <ol className="muted" style={{ lineHeight: 1.8 }}>
-        {timeline.map((m) => (
-          <li key={m.id}>
-            <strong>{m.title}</strong> — week {m.weeks} <em>({m.status})</em>
-          </li>
-        ))}
-      </ol>
+     
 
       <div className="cta-row">
         {readyNow ? (

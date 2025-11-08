@@ -1,6 +1,6 @@
 from firebase_admin import firestore
 from Backend.config.qdrant_config import qdrant
-from Backend.services.embeddings_service import get_embedding
+from Backend.services.embedding_service import get_embedding
 from qdrant_client.http import models
 import uuid
 

@@ -17,6 +17,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import ReadinessForm from "./pages/Readiness";
+import Realtors from "./pages/Realtors";
 
 function AppContent() {
   const location = useLocation();
@@ -45,7 +46,7 @@ function AppContent() {
         <Route path="/resources" element={<ResourcesAssistance />} />
         <Route path="/knowledge-center" element={<KnowledgeCenter />} />
         <Route path="/about" element={<AboutUs />} />
-         
+        <Route path="/realtors" element={<Realtors />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

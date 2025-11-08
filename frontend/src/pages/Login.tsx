@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
-import house from '@/assets/home-2.avif'
+import house from "@/assets/home-2.avif";
 import "../styles/login.css";
 
 export default function Login() {
@@ -14,15 +14,18 @@ export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // redirect user to previous path or dashboard after login
   const from = (location.state as any)?.from?.pathname || "/dashboard";
 
+  // --- Email login ---
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     try {
       setSubmitting(true);
-      await signInWithEmail(email, password);
+      const user = await signInWithEmail(email, password);
+      if (user?.uid) {
+        localStorage.setItem("user_id", user.uid); // ✅ Save logged-in user
+      }
       navigate(from, { replace: true });
     } catch (err: any) {
       setError(err?.message || "Failed to sign in.");
@@ -31,11 +34,19 @@ export default function Login() {
     }
   }
 
+  // --- Google login ---
   async function onGoogleLogin() {
     setError(null);
     try {
       setSubmitting(true);
-      await signInWithGoogle();
+      const user = await signInWithGoogle();
+
+      // ✅ Capture and persist UID for backend use
+      if (user?.uid) {
+        console.log("✅ Google user ID:", user.uid);
+        localStorage.setItem("user_id", user.uid);
+      }
+
       navigate(from, { replace: true });
     } catch (err: any) {
       setError(err?.message || "Google sign-in failed.");
@@ -57,49 +68,29 @@ export default function Login() {
           </Link>
         </p>
 
-        <form className="card" onSubmit={onSubmit} aria-label="Sign in form">
+        <form className="card" onSubmit={onSubmit}>
           <div className="field">
-            <label htmlFor="login-email">Email Address</label>
+            <label>Email Address</label>
             <input
-              id="login-email"
               className="input"
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              autoComplete="email"
             />
           </div>
 
           <div className="field">
-            <label htmlFor="login-password">Password</label>
+            <label>Password</label>
             <input
-              id="login-password"
               className="input"
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              autoComplete="current-password"
             />
-          </div>
-
-          <div className="row between">
-            <label className="remember">
-              <input type="checkbox" /> Remember me
-            </label>
-            <a
-              className="muted"
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                alert("Password reset feature coming soon!");
-              }}
-            >
-              Forgot password?
-            </a>
           </div>
 
           {error && <p className="error">{error}</p>}
@@ -116,12 +107,8 @@ export default function Login() {
             onClick={onGoogleLogin}
             disabled={submitting}
           >
-            <svg
-              aria-hidden="true"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-            >
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
+              {/* Google icon */}
               <path
                 fill="#EA4335"
                 d="M12 10.2v3.9h5.4c-.2 1.3-1.6 3.8-5.4 3.8-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.1.8 3.8 1.5l2.6-2.6C16.8 3.3 14.6 2.4 12 2.4 6.9 2.4 2.7 6.6 2.7 11.7S6.9 21 12 21c6.9 0 9.3-4.8 9.3-7.2 0-.5-.1-.8-.1-1.1H12Z"
@@ -145,10 +132,13 @@ export default function Login() {
       </section>
 
       {/* RIGHT: Hero */}
-      <aside className="auth-right"  style={{ ["--hero" as any]: `url(${house})` }}>
+      <aside
+        className="auth-right"
+        style={{ ["--hero" as any]: `url(${house})` }}
+      >
         <div className="hero-overlay">
-        <h2>Your Path to Home Ownership</h2>
-    <p>Discover tools, insights, and support to prepare for your first home.</p>
+          <h2>Your Path to Home Ownership</h2>
+          <p>Discover tools, insights, and support to prepare for your first home.</p>
         </div>
       </aside>
     </div>

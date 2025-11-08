@@ -14,7 +14,7 @@
 
 import json
 from qdrant_client.http import models
-from Backend.config.qdrant_config import qdrant_client
+
 from Backend.config.bedrock_config import bedrock
 
 

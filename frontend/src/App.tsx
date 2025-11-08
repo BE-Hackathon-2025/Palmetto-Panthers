@@ -16,6 +16,7 @@ import Signup from "./pages/Signup";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import ReadinessForm from "./pages/Readiness";
 
 function AppContent() {
   const location = useLocation();
@@ -37,12 +38,14 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
-
+        
+        <Route path="/check-readiness" element={<ReadinessForm/>}></Route>
         <Route path="/first-steps" element={<FirstSteps />} />
         <Route path="/financial-readiness" element={<FinancialReadiness />} />
         <Route path="/resources" element={<ResourcesAssistance />} />
         <Route path="/knowledge-center" element={<KnowledgeCenter />} />
         <Route path="/about" element={<AboutUs />} />
+         
 
         <Route path="*" element={<NotFound />} />
       </Routes>

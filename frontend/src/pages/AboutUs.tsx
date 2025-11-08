@@ -101,10 +101,6 @@ export default function AboutUs() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-primary font-bold">•</span>
-                <span>Organize your documents into a lender-ready packet</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">•</span>
                 <span>Provide tools to ensure fair treatment throughout the appraisal process</span>
               </li>
             </ul>

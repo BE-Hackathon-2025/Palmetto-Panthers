@@ -1,10 +1,12 @@
+import os
+from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-def get_firebase_client():
-    if not firebase_admin._apps:
-        cred = credentials.Certificate("Backend/config/firebase_service_key.json")
-        firebase_admin.initialize_app(cred)
-    return firestore.client()
+load_dotenv()  # load .env variables
 
-db = get_firebase_client()
+cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+cred = credentials.Certificate(cred_path)
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()

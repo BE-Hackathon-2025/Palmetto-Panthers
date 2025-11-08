@@ -50,8 +50,9 @@
 ```
 React Form → FastAPI /readiness/score → ReadinessService → Score + Breakdown → React renders cards & charts
 
-![Architecture Diagram](https://img.plantuml.biz/plantuml/png/dLJ1RXen4BtlLumuLA2oshH7990Wb8OsLMYWpILIPDQ67U6rBTjBIcck_O1-Oh-aOo-Ka215hRJIhkmtC-_Dl5cFNWgO5UY07WONkXJNWl4Dz6rUe1Uvhwn84iEinnmDKnw-E66F3XetOWvzOw19eRb_FPks6i0SZAnMNYX-31wX5NFc1FGhNqHS-3Z635Y-ea1eZfZp_ScupaSVnx3XW12KpdbjHJRzV5dZXeCawNPXYajL6UXsay0uxUtfT624KeAhhnVQbj0K9KEP6URSlROSj8NtMY-bQ2NxgBGNQ7OWju9v4J8-2Mf15dEErGtwOg9DPPhx924qVSoWGju6v3DDCg7vuMPsL6Woxi3aQZg3hA8wBaE57hOnnbYzG2aU4WAblU5WJmW2Sd-R30VfBerUHUJZsc_Fti1v3EA7ecalIEh0jU3KqDo3rp1ahfXhPdbivwLUeZhLpMarBucVZFV_qCcwMKy3Vi3_DUqHd-260yu9vr2hJEgSqTJfaYqfUv0Kd8wAxc6QXvWJuguCvJZW3CK28sUwMdHmp-d9sNrCvcBkPf2ZBNvddjXqO22OfOdjQBPkrHPLJjlN1YkKRmCNS-_QuDWQrP8-QCmS_LrCrWRFx59ujxD1BFjLM5niWDfIBqMzOxoaeMHq-h5ri4nJcq22oHOiXC-BO_CSKbB3yae6TzKQNi6SPAsulbVFNBNTCPjJTyYcw94q67PNCYeWN915yah2nWOGzMVUcnRwdcfQ7kGMjEZqLkARfw49u-gTPkj0umB373Ud1dOkCLz18mAjCDhwnei32jYjOHkf6N_OEUjliof35VmkrqkRTHQEJmlpclvbDJ7UY1ugTYealPD4QUgpNjCWzl7jMEUTjTew-Ftp5w2In1XA8aq-TBSgXR5QCuayseDyWqp6uqz8fbTBMA2GF9xKso2-6R86ZzciI5duy_u1)
 
+
+<img width="1175" height="1163" alt="diagram" src="https://github.com/user-attachments/assets/80278445-2bb3-4dcf-b0a7-4c293a92f69a" />
 
 
 
@@ -89,7 +90,7 @@ HomeReady/
 ---
 
 ## 📽 Link to Demo Presentation
-- Canva/Slides: **[Add your link here]**
+- Canva/Slides: ****
 
 ---
 

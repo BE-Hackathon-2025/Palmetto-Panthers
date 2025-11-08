@@ -39,7 +39,7 @@
 - Pydantic schemas
 - Readiness scoring service (`readiness_service.py`)
 - Uvicorn
-- Optional: MongoDB or PostgreSQL (long-term analytics)
+- Database: Firebase 
 
 **AI / Integrations**
 - Hugging Face translation models (multilingual intake)
@@ -69,29 +69,12 @@ Sequence Diagram: https://github.com/user-attachments/assets/80278445-2bb3-4dcf-
 
 ---
 
-## 🗂 Suggested Repo Structure
-```
-HomeReady/
-├─ frontend/               # React + TS + Vite
-│  ├─ src/
-│  │  ├─ components/
-│  │  ├─ pages/
-│  │  ├─ services/        # api client
-│  │  └─ styles/
-│  └─ .env
-├─ backend/                # FastAPI
-│  ├─ Backend/services/readiness_service.py
-│  ├─ Backend/schemas/readiness_model.py
-│  ├─ main.py
-│  └─ requirements.txt
-└─ README.md
-```
 
 ---
 
 ## 📽 Link to Demo Presentation
 - Canva/Slides: ****
-
+https://drive.google.com/file/d/1mZUzMOaByjkB0VO5CJtL4KGx5GHL-gyg/view?usp=sharing
 ---
 
 
@@ -114,6 +97,6 @@ HomeReady/
 **April Ossai,** 
 **Subash Neupane,** 
 **Amrinder Singh,** 
-**Javarius**
+**Javarius Youmans**
 
 > 🏆 Built for equitable access to homeownership readiness.

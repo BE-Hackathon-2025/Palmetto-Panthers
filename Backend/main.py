@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from Backend.routes import readiness_routes 
+from Backend.routes.readiness_routes import router as readiness_router
 
 app = FastAPI(title="Bridge AI Backend", version="1.0")
 
-# CORS settings
+# Allow local + deployed frontends
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -17,8 +17,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Register v1 routes
-app.include_router(readiness_routes, prefix="/api/v1")
+# Register route modules under /api/v1
+app.include_router(readiness_router, prefix="/api/v1")
 
 @app.get("/")
 def root():

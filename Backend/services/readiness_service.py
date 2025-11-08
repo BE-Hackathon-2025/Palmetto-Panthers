@@ -1,6 +1,6 @@
 # Backend/services/readiness_service.py
 from typing import Dict, List, Literal
-from Backend.schemas.readiness_models import ReadinessResponse, ReadinessBreakdownItem, ReadinessForm
+from Backend.schemas.readiness_model import ReadinessResponse, ReadinessBreakdownItem, ReadinessForm
 
 CREDIT_THRESHOLD = 640
 AFFORDABILITY_MIN = 0.28
